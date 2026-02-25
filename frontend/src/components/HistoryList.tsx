@@ -48,7 +48,7 @@ export default function HistoryList({ batches, loading, batchCount, onRefresh }:
             <button
               key={b.batchId}
               onClick={() => setSelected(b)}
-              className="flex w-full items-center justify-between rounded-lg border border-border p-4 text-left transition-all hover:shadow-card-hover hover:border-primary/30"
+              className="flex w-full flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-lg border border-border p-4 text-left transition-all hover:shadow-card-hover hover:border-primary/30"
             >
               <div>
                 <p className="font-semibold text-foreground">Batch #{b.batchId}</p>
@@ -56,7 +56,7 @@ export default function HistoryList({ batches, loading, batchCount, onRefresh }:
                   {b.recipients.length} recipient{b.recipients.length !== 1 ? 's' : ''} · Block {b.timestamp}
                 </p>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 self-end sm:self-auto">
                 <span className="font-mono font-bold text-foreground">
                   {microToStx(b.total).toFixed(2)} STX
                 </span>
