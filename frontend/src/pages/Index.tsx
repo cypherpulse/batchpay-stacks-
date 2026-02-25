@@ -25,14 +25,17 @@ const Index = () => {
 
       {/* Header */}
       <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-40">
-        <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-4 px-4 py-3">
-          <div className="flex items-center gap-2">
-            <div className="gradient-orange flex h-8 w-8 items-center justify-center rounded-lg">
-              <Zap className="h-5 w-5 text-primary-foreground" />
+        <div className="mx-auto flex flex-col sm:flex-row max-w-4xl items-center justify-between px-4 py-3 gap-4 sm:gap-0">
+          <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-start">
+            <div className="flex items-center gap-2">
+              <div className="gradient-orange flex h-8 w-8 items-center justify-center rounded-lg">
+                <Zap className="h-5 w-5 text-primary-foreground" />
+              </div>
+              <span className="text-lg font-bold text-foreground">BatchPay</span>
             </div>
-            <span className="text-lg font-bold text-foreground">BatchPay</span>
+             {/* Mobile-only network switcher could go here if needed, but let's keep it simple */}
           </div>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex w-full sm:w-auto items-center gap-3 justify-between sm:justify-end">
             <NetworkSwitcher network={network} onChange={setNetwork} />
             <ConnectWallet
               address={address}
@@ -46,14 +49,14 @@ const Index = () => {
       </header>
 
       {/* Main */}
-      <main className="mx-auto max-w-4xl px-4 py-8">
+      <main className="mx-auto max-w-4xl px-4 py-6 sm:py-8">
         {!address ? (
-          <div className="flex flex-col items-center justify-center py-24 text-center">
+          <div className="flex flex-col items-center justify-center py-12 sm:py-24 text-center">
             <div className="gradient-orange mb-6 flex h-16 w-16 items-center justify-center rounded-2xl animate-pulse-orange">
               <Zap className="h-9 w-9 text-primary-foreground" />
             </div>
-            <h1 className="mb-2 text-3xl font-bold text-foreground">Stacks BatchPay</h1>
-            <p className="mb-8 max-w-md text-muted-foreground">
+            <h1 className="mb-2 text-2xl sm:text-3xl font-bold text-foreground">Stacks BatchPay</h1>
+            <p className="mb-8 max-w-md text-sm sm:text-base text-muted-foreground">
               Send STX to multiple recipients in a single transaction. Fast, cheap, and on-chain.
             </p>
             <button
