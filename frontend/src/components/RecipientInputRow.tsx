@@ -15,15 +15,21 @@ export default function RecipientInputRow({ index, entry, onChange, onRemove, ca
   const invalidAmount = entry.amount.length > 0 && (isNaN(Number(entry.amount)) || Number(entry.amount) <= 0);
 
   return (
-    <div className="flex items-start gap-2 animate-fade-in">
-      <span className="mt-3 w-6 shrink-0 text-center text-xs font-mono text-muted-foreground">{index + 1}</span>
-      <div className="flex flex-1 flex-col gap-2 sm:flex-row">
+    <div className="flex items-start gap-2 animate-fade-in py-2 sm:py-0 border-b sm:border-b-0 border-border/50 last:border-0">
+      <span className="mt-3 w-6 shrink-0 text-center text-xs font-mono text-muted-foreground hidden sm:block">
+        {index + 1}
+      </span>
+      <div className="flex flex-1 flex-col gap-2 sm:flex-row w-full">
+        <div className="flex items-center gap-2 sm:hidden">
+          <span className="text-xs font-mono text-muted-foreground">#{index + 1}</span>
+          <span className="text-xs text-muted-foreground">Recipient</span>
+        </div>
         <input
           type="text"
           placeholder="Recipient principal (SP…)"
           value={entry.to}
           onChange={(e) => onChange(index, { ...entry, to: e.target.value.trim() })}
-          className={`flex-[2] rounded-lg border bg-card px-3 py-2.5 font-mono text-sm outline-none transition-colors placeholder:text-muted-foreground focus:ring-2 focus:ring-ring ${
+          className={`w-full flex-[2] rounded-lg border bg-card px-3 py-2.5 font-mono text-sm outline-none transition-colors placeholder:text-muted-foreground focus:ring-2 focus:ring-ring ${
             invalidPrincipal ? 'border-destructive' : 'border-border'
           }`}
         />
