@@ -11,7 +11,7 @@ export default function BatchDetailModal({ batch, onClose }: Props) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/40 p-4 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="w-full max-w-lg rounded-xl border border-border bg-card p-6 shadow-xl animate-fade-in max-h-[80vh] overflow-y-auto"
+        className="w-[95%] sm:max-w-lg rounded-xl border border-border bg-card p-4 sm:p-6 shadow-xl animate-fade-in max-h-[80vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-center justify-between">
@@ -21,20 +21,20 @@ export default function BatchDetailModal({ batch, onClose }: Props) {
           </button>
         </div>
 
-        <div className="mb-4 grid grid-cols-2 gap-3 text-sm">
-          <div className="rounded-lg bg-muted/50 p-3">
+        <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+          <div className="rounded-lg bg-muted/50 p-3 flex justify-between sm:block">
             <p className="text-muted-foreground">Total Sent</p>
             <p className="font-mono font-bold">{microToStx(batch.total).toFixed(6)} STX</p>
           </div>
-          <div className="rounded-lg bg-muted/50 p-3">
+          <div className="rounded-lg bg-muted/50 p-3 flex justify-between sm:block">
             <p className="text-muted-foreground">Fee Paid</p>
             <p className="font-mono font-bold">{microToStx(batch.fee).toFixed(6)} STX</p>
           </div>
-          <div className="rounded-lg bg-muted/50 p-3">
+          <div className="rounded-lg bg-muted/50 p-3 flex justify-between sm:block">
             <p className="text-muted-foreground">Recipients</p>
             <p className="font-bold">{batch.recipients.length}</p>
           </div>
-          <div className="rounded-lg bg-muted/50 p-3">
+          <div className="rounded-lg bg-muted/50 p-3 flex justify-between sm:block">
             <p className="text-muted-foreground">Block Height</p>
             <p className="font-mono font-bold">{batch.timestamp}</p>
           </div>
@@ -43,14 +43,14 @@ export default function BatchDetailModal({ batch, onClose }: Props) {
         <div className="space-y-2">
           <h4 className="text-sm font-semibold text-muted-foreground">Recipients</h4>
           {batch.recipients.map((r, i) => (
-            <div key={i} className="flex items-center justify-between rounded-lg border border-border p-3 text-sm">
+            <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-0 rounded-lg border border-border p-3 text-sm">
               <div>
-                <p className="font-mono text-foreground">{truncateAddress(r)}</p>
+                <p className="font-mono text-foreground break-all sm:break-normal">{truncateAddress(r)}</p>
                 {batch.names[i] && (
                   <p className="text-xs text-muted-foreground">{batch.names[i]}</p>
                 )}
               </div>
-              <span className="font-mono font-semibold text-foreground">
+              <span className="font-mono font-semibold text-foreground self-end sm:self-auto">
                 {microToStx(batch.amounts[i]).toFixed(6)} STX
               </span>
             </div>
