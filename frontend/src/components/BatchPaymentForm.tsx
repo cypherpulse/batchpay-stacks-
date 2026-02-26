@@ -139,14 +139,14 @@ export default function BatchPaymentForm({ address, network, onSuccess }: Props)
 
       <button
         onClick={addRow}
-        className="mt-3 flex items-center gap-1.5 rounded-lg border border-dashed border-border px-3 py-2 text-sm text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+        className="mt-3 flex items-center gap-1.5 rounded-lg border border-dashed border-border px-3 py-2 text-xs sm:text-sm text-muted-foreground transition-colors hover:border-primary hover:text-primary w-full sm:w-auto justify-center sm:justify-start"
       >
         <Plus className="h-4 w-4" />
         Add recipient
       </button>
 
       {/* Summary */}
-      <div className="mt-6 space-y-1.5 rounded-lg bg-muted/50 p-4 text-sm">
+      <div className="mt-6 space-y-1.5 rounded-lg bg-muted/50 p-3 sm:p-4 text-xs sm:text-sm">
         <div className="flex justify-between">
           <span className="text-muted-foreground">Subtotal ({validEntries.length} recipients)</span>
           <span className="font-mono font-medium">{subtotal.toFixed(6)} STX</span>
